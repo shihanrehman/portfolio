@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Bare - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+    body {
+        padding-top: 70px;
+        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<a class="navbar-brand" href="#">Start Bootstrap</a> -->
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="index.html">About Me</a>
+                    </li>
+                    <li>
+                        <a href="siproject.html">SI Partner Project</a>
+                    </li>
+                    <li>
+                        <a href="project.html">Projects</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1>SI Partner Project at LiquidTalent</h1>
+                <p class="medium text-left">
+
+                "Get warm introductions to vetted developers, designers and the best companies through your social connections. Speak directly via phone and text through our web platform and mobile app."
+                <br><br>My Partner Project was at LiquidTalent.  A description of what they do is in the quotes above.  For this project, for part 1, I had to implement a web-scraper that scrapes the information of freelance software developers from angel list.  This parameters includes their name, linkedin URL, skills, education, and work history. <br> <b>Part 1: Generate a CSV file containing all the freelancers with their respective parameters<br>Part 2: Generate text files of the html markup of each freelancer's profile page</b>
+                <br><br>
+                "i.e Sample data snapshot of generated CSV file for Part 1"<br>
+                <img src="csv.png"><br>
+                <br><b>Lets start with Part 1.... </b>
+                </p>
+                <p class="medium text-left">
+                
+                Firstly, the file below is testclass.rb and we want to initialize the proper libraries and gems in lines 1-4.  The open-uri library opens a URL within the text editor, Nokogiri parses the web page, CSV is a library that generates a CSV file, and httpclient writes the html markup into outputted text files. <br><br>The load 'namescraper.rb' file contains class NameScraper, which is a class that that defines the methods to grab the parameters of each freelancer.  On line 6, a new instance of NameScraper is <b>instantiated to varialbe "ns".  We will be using the "ns" variable to call the methods in namescraper.rb</b>  I will explain that later. <br><br>  Secondly, we want to grab the URL links of each freelancer, so we declare an empty arrary "urls" to store those urls, in lines 18 to 32, we loop through all URL pages below as seen in the url variable, which contains a listing of freelancers related to search terms Ruby on Rails and NYC.  Notice, the counter "i" in url = "https://angel.co/people?tag_ids%5B%5D=1664&tag_ids%5B%5D=82532&page=#{i}", "i" denotes the page number we are looping through, and the loop breaks when it cannot find any more profile links as seen on line 28.  <br><br>  In lines 36-38, <b>object "ns" calls the createProfile method and passes in all the extracted urls from the "urls" arrary </b>
+
+                
+                </p>
+                <p class="medium text-left"><img src="testclass.png"></p>
+                <p class="medium text-left">The createProfile method, in namescraper.rb file below, takes in all the url's, and finds all the parameters, and a new person object is created in line 43 with a Person Class, which is loaded from the person.rb file, as seen in the pic below, person.rb is already loaded in namescraper.rb in line 6.  In person.rb, we set attr_reader and initialize the parameteres, so this resloves the need for us to create individual methods to grab the parameters in namescraper.rb, this is a common best practice in object-oriented programming, so we don't have multiple lines of code. <br><br> In the end, we are able to generate the CSV as createProfile method combines all the parameters into a super arrary called "arraryofPersons" and "arrayOfPersons is being used in the CSV.open method in testclass.rb to generate the CSV file as seen in the sample pic above of the csv file.<br><br>This is only Part 1 of the project, Part 2 involves the generation of the html markup of each profile, so if there are 200 freelancers, 200 html files are generated, which for the sake of brevity I will not include it in this website, however, it can be viewed on my github link above. <br><br>In conclusion, I continue to provide production support for LiquidTalent to incorporate different search terms into this script I wrote.  Furthur search terms include, Python and NYC, ios and NYC, Java and NYC etc... This template can be used not only for Angel List, but for eLance, craiglist etc.. and drastically elimated the need of manual copying and pasting.</p>
+                <p class="medium text-left"><img src="namescraper.png"></p>
+                <p class="medium text-left"><img src="person.png"></p>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery Version 1.11.1 -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
